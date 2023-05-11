@@ -1,0 +1,90 @@
+﻿<Window x:Class="Note.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Note"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="660" Width="520"
+        Background="#65C38C"
+        ResizeMode="NoResize"
+        WindowStyle="None">
+    <Window.Resources>
+        <Style x:Key="ComboboxBytton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
+            <Setter Property="Background" Value="#3B6D50"></Setter>
+            <Setter Property="Foreground" Value="#AAF0D1"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name ="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="PreviewMouseDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.100" To="2,2,0,0"></ThicknessAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+
+                            <EventTrigger RoutedEvent="PreviewMouseUp">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.100" To="0,0,0,0"></ThicknessAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.06*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="t1" Grid.Column="0" TextWrapping="Wrap" xml:lang="ru-RU" SpellCheck.IsEnabled="True"   Grid.ColumnSpan="13"  Grid.Row="1"   Margin="7,7,7,7"/>
+
+        <Button Content="file" Style="{StaticResource ComboboxBytton}"  Click="f1"/>
+        <Grid x:Name="H" Height="644" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,-171,0,0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="37"/>
+                <RowDefinition Height="3"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3"/>
+                <RowDefinition Height="446"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="New" Content="new" Grid.Row="2" Style="{StaticResource ComboboxBytton}"   Click="fNew"/>
+            <Button x:Name="Open" Content="open" Grid.Row="4" Style="{StaticResource ComboboxBytton}"   Click="fOpen"/>
+            <Button x:Name="Save" Content="save" Grid.Row="6" Style="{StaticResource ComboboxBytton}"   Click="fSave"/>
+            <Button x:Name="SaveAs" Content="save as" Grid.Row="8" Style="{StaticResource ComboboxBytton}"   Click="fSaveAs"/>
+        </Grid>
+        <Button Content="file" Style="{StaticResource ComboboxBytton}"  Click="f1"/>
+        <Button Content="X" Style="{StaticResource ComboboxBytton}" Grid.Column="9"  Click="xxx"/>
+        <Image x:Name="imagePicture" Grid.Column="1" Margin="0,80,0,492" Grid.Row="1"/>
+        
+    </Grid>
+
+</Window>
